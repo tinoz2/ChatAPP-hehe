@@ -1,0 +1,177 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 30px;
+    width: 25%;
+    border-radius: 0.375rem;
+    margin: 5rem auto;
+    border: 1px solid #fff;
+    backdrop-filter: blur(2px);
+    box-shadow: 2px 2px 15px 0px#000;
+    background-color: #151717;
+}
+
+.form button {
+    align-self: flex-end;
+}
+
+.flex-column>label {
+    color: #fff;
+    font-weight: 600;
+}
+
+.inputForm {
+    border: 1.5px solid #ecedec;
+    border-radius: 10px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    transition: 0.2s ease-in-out;
+}
+
+.input {
+    margin-left: 10px;
+    border-radius: 10px;
+    border: none;
+    width: 85%;
+    height: 100%;
+    background: transparent;
+    color: #fff;
+}
+
+.input:focus {
+    outline: none;
+}
+
+.inputForm:focus-within {
+    border: 1.5px solid #293038;
+    ;
+}
+
+.input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 30px transparent inset !important;
+    background-color: transparent !important;
+    transition: background-color 5000s ease-in-out 0s;
+    color: #fff !important;
+}
+
+.input:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0 30px transparent inset !important;
+    background-color: transparent !important;
+    color: #fff !important;
+}
+
+.input:-internal-autofill-selected {
+    background-color: transparent !important;
+    color: #fff !important;
+}
+
+.inputForm input[type="text"]:-webkit-autofill {
+    -webkit-text-fill-color: #fff !important;
+}
+
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    justify-content: space-between;
+}
+
+.flex-row>div>label {
+    font-size: 14px;
+    color: #fff;
+    font-weight: 400;
+}
+
+.span {
+    font-size: 15px;
+    margin-left: 5px;
+    color: #fff;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.button-submit {
+    margin: 20px 0 10px 0;
+    background-color: #607AFB;
+    border: none;
+    color: white;
+    font-size: 15px;
+    font-weight: 500;
+    border-radius: 10px;
+    height: 50px;
+    width: 100%;
+    cursor: pointer;
+    opacity: 0.9;
+    transition: 0.3s;
+}
+
+.button-submit:hover {
+    opacity: 1;
+}
+
+.p {
+    text-align: center;
+    color: #ccc;
+    font-size: 13px;
+    margin: 5px 0;
+}
+
+.btn {
+    margin-top: 10px;
+    width: 100%;
+    height: 50px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 500;
+    gap: 10px;
+    border: 1px solid #ededef;
+    background-color: white;
+    cursor: pointer;
+    opacity: 0.9;
+    transition: 0.3s;
+    color: #000;
+}
+
+.btn:hover {
+    opacity: 1;
+}
+
+.flex-row2 {
+    width: 150px;
+    margin: 0 auto;
+}
+
+.loader-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.loader {
+    width: 50px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background:
+        radial-gradient(farthest-side, #fff 94%, #0000) top/8px 8px no-repeat,
+        conic-gradient(#0000 30%, #fff);
+    -webkit-mask: radial-gradient(farthest-side, #0000 calc(100% - 8px), #000 0);
+    animation: l13 1s infinite linear;
+}
+
+@keyframes l13 {
+    100% {
+        transform: rotate(1turn);
+    }
+}
+
+.active{
+    opacity: 0.5;
+}
