@@ -3,6 +3,7 @@
         "start": "node backend/index.js"
     },
     "dependencies": {
-        "bcryptjs": "^2.4.3"
+        "bcryptjs": "^2.4.3",
+        "mongodb": "^6.4.0"
     }
 }
