@@ -22,9 +22,8 @@ app.use(bodyParser.json());
 app.use(cookieParser())
 app.use(cors({  
     credentials: true,
-    origin: process.env.CLIENT
+    origin: process.env.CLIENT || 'http://localhost:5173'
 }))
-
 app.use('/auth', AuthRoutes)
 app.use('/users', usersRoutes)
 app.use('/messages', messagesRoutes)
