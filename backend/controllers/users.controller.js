@@ -66,6 +66,8 @@ export const uploadFile = async (req, res) => {
             if (!userFound) return res.status(404).json({ msg: 'User not found' });
 
             const { filename } = req.file;
+            console.log(filename)
+            console.log(req.file)
             const tempPath = req.file.path;
             const newPath = `uploads/${filename}`;
 

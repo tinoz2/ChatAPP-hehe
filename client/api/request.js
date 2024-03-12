@@ -1,49 +1,43 @@
 import axios from './axios.js'
 
-const headers = {
-    'Access-Control-Allow-Origin': 'https://chatapp-hehe-production.up.railway.app',
-    'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
-    'Access-Control-Allow-Headers': 'Content-Type, Authorization'
-};
-
 const registerRequest = (data) => {
-    return axios.post('/auth/register', data, { headers });
+    return axios.post('/auth/register', data);
 }
 
 const loginRequest = (data) => {
-    return axios.post('/auth/login', data, { headers });
+    return axios.post('/auth/login', data);
 }
 
 const logoutRequest = () => {
-    return axios.post('/auth/logout', null, { headers });
+    return axios.post('/auth/logout');
 }
 
 const verifyRequest = () => {
-    return axios.post('/auth/verify', null, { headers });
+    return axios.post('/auth/verify');
 }
 
 const profileRequest = () => {
-    return axios.get('/users/profile', { headers });
+    return axios.get('/users/profile');
 }
 
 const updateProfile = (id, data) => {
-    return axios.put(`/users/update/${id}`, data, { headers });
+    return axios.put(`/users/update/${id}`, data);
 }
 
 const updatePhoto = (data) => {
-    return axios.post(`/users/upload`, data, { headers });
+    return axios.post(`/users/upload`, data);
 }
 
 const getMessages = (id) => {
-    return axios.get(`/messages/${id}`, { headers });
+    return axios.get(`/messages/${id}`);
 }
 
 const sendMessagesRequest = (id, data) => {
-    return axios.post(`/messages/send/${id}`, data, { headers });
+    return axios.post(`/messages/send/${id}`, data);
 }
 
 const getFriends = () => {
-    return axios.get("/api/users", { headers });
+    return axios.get("/api/users");
 }
 
 export {
