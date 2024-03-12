@@ -64,10 +64,13 @@ export const uploadFile = async (req, res) => {
         try {
             const userFound = await User.findById(decodedToken.id);
             if (!userFound) return res.status(404).json({ msg: 'User not found' });
+            console.log(req.file)
+
+            if (!req.file) {
+                return res.status(400).json({ msg: 'No file uploaded' });
+            }
 
             const { filename } = req.file;
-            console.log(filename)
-            console.log(req.file)
             const tempPath = req.file.path;
             const newPath = `uploads/${filename}`;
 
