@@ -32,7 +32,6 @@ export const UserProvider = ({ children }) => {
         fetchFriends()
     }, [])
 
-
     return (
         <UserContext.Provider value={{ user, setUser, friends, setFriends }}>
             {children}

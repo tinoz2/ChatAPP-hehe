@@ -10,7 +10,7 @@ const register = async (req, res) => {
         const passwordHash = await bcrypt.hash(password, 10)
         const user = await User.create({ name, password: passwordHash, email })
 
-        jwt.sign({ id: user._id }, process.env.SECRET_KEY, { expiresIn: '1d' }, (err, token) => {
+        jwt.sign({ id: user._id }, process.env.SECRET_KEY, { expiresIn: '15d' }, (err, token) => {
             err ? console.log(err) :
                 res.cookie('token', token)
             res.json({
@@ -31,14 +31,13 @@ const login = async (req, res) => {
     try {
         const { password, email } = req.body
         const user = await User.findOne({ email })
-
         if (!user) return res.status(400).json({ msg: 'Email does not exist' })
 
         const passwordIsMatch = await bcrypt.compare(password, user.password)
 
         if (!passwordIsMatch) return res.status(400).json({ msg: 'Invalid credentials' })
 
-        jwt.sign({ id: user._id }, process.env.SECRET_KEY, { expiresIn: '1d' }, (err, token) => {
+        jwt.sign({ id: user._id }, process.env.SECRET_KEY, { expiresIn: '15d' }, (err, token) => {
             err ? console.log(err) :
                 res.cookie('token', token)
             res.json({

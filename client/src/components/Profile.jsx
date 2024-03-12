@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { updateProfile, updatePhoto } from '../../api/request.js'
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { Button, Modal } from "keep-react";
 import { CloudArrowUp } from "phosphor-react";
 import { useUser } from '../context/UserContext';
@@ -8,11 +8,13 @@ import iconProfile from '../img/profile.svg'
 
 const Profile = () => {
 
-    const {user, setUser} = useUser()
+    const { user, setUser } = useUser()
     const [newName, setNewName] = useState('');
     const [error, setError] = useState('');
     const [showModal, setShowModal] = useState(false);
     const [file, setFile] = useState(null);
+
+    const inputRef = useRef(null)
 
     const updateName = async () => {
         try {
@@ -44,28 +46,30 @@ const Profile = () => {
         addStyle.classList.toggle('active')
     };
 
-    const handleFileChange = async (e) => {
-        const selectedFile = e.target.files[0];
-        setFile(selectedFile);
-        await handleProfilePhotoChange(selectedFile);
-    };
+    const handleFileChange = async () => {
+        inputRef.current.click()
+    }
 
-    const handleProfilePhotoChange = async (selectedFile) => {
-        if (!selectedFile) {
-            return;
-        }
-        try {
-            const formData = new FormData();
-            formData.append('file', selectedFile);
-            const res = await updatePhoto(formData);
+    const handleProfileImage = async (event) => {
+        const file = event.target.files[0];
+        setFile(file);
+
+        if (file) {
+            const imgUrl = URL.createObjectURL(file);
             setUser(prevUser => ({
                 ...prevUser,
-                imgPath: res.data.imgPath
+                imgPath: imgUrl
             }));
-        } catch (error) {
+        }
+        const formData = new FormData();
+        formData.append('file', file);
+        try {
+            const response = await updatePhoto(formData);
+        }
+        catch (error) {
             console.log(error);
         }
-    };
+    }
 
     return (
         <div className='container-profile'>
@@ -82,9 +86,11 @@ const Profile = () => {
                 <div>
                     <div className='flex items-center mb-12'>
                         <div className=' w-1/2'>
-                            <label htmlFor='profileImage'>
-                                <img src={user?.imgPath ? `http://localhost:8080/${user?.imgPath}` : iconProfile} className='cursor-pointer img-profile2' alt='icon profile' style={{width: '400px', height: '300px', borderRadius: '50%'}} />
-                                <input id='profileImage' name='file' type='file' onChange={handleFileChange} style={{ display: 'none' }} />
+                            <label onClick={handleProfileImage} htmlFor='profileImage'>
+                                <img src={user?.imgPath ? user.imgPath : iconProfile} className='cursor-pointer img-profile2' alt='icon profile' style={{ width: '400px', height: '300px', borderRadius: '50%' }} />
+                                <input id='profileImage' name='file' type='file'
+                                    onChange={handleFileChange} ref={inputRef}
+                                    style={{ display: 'none' }} />
                             </label>
                         </div>
                         <p className='ml-6 text-xl capitalize'>{user && user.name}</p>
