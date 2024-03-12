@@ -12,7 +12,10 @@ const register = async (req, res) => {
 
         jwt.sign({ id: user._id }, process.env.SECRET_KEY, { expiresIn: '1d' }, (err, token) => {
             err ? console.log(err) :
-                res.cookie('token', token)
+                res.cookie('token', token, {
+                    sameSite: 'none',
+                    secure: true,
+                })
             res.json({
                 id: user._id,
                 name: user.name,
@@ -40,7 +43,10 @@ const login = async (req, res) => {
 
         jwt.sign({ id: user._id }, process.env.SECRET_KEY, { expiresIn: '1d' }, (err, token) => {
             err ? console.log(err) :
-                res.cookie('token', token)
+                res.cookie('token', token, {
+                    sameSite: 'none',
+                    secure: true
+                })
             res.json({
                 id: user._id,
                 name: user.name,

@@ -1,9 +1,13 @@
 import axios from 'axios'
-import { URL } from '../config/host.js'
+import { URL_BACKEND } from '../config/host.js'
 
 const api = axios.create({
-    baseURL: URL,
+    baseURL: URL_BACKEND,
     withCredentials: true,
+    headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+    }
 })
 
 export default api

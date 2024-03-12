@@ -1,6 +1,7 @@
 import { createContext, useContext, useState, useEffect } from 'react';
 import { useUser } from './UserContext.jsx';
 import io from 'socket.io-client'
+import { URL_BACKEND } from '../../config/host.js';
 
 const SocketContext = createContext();
 
@@ -12,7 +13,7 @@ export const SocketProvider = ({ children }) => {
 
     useEffect(() => {
         if (user) {
-            const socket = io("/", {
+            const socket = io(URL_BACKEND, {
                 query: { userId: user.id }
             })
 
