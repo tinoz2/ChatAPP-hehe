@@ -18,7 +18,7 @@ export const UserProvider = ({ children }) => {
             }
         }
         fetchUser()
-    }, [])
+    }, [user])
 
     useEffect(() => {
         const fetchFriends = async () => {
