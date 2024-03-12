@@ -7,3 +7,4 @@ converage
 .vscode
 .github
 .env
+backend/node_modules

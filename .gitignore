@@ -1,3 +1,4 @@
 .env
 client/config/host.js
 node_modules
+backend/node_modules
