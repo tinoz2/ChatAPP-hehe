@@ -3,7 +3,7 @@ import { URL } from '../config/host.js'
 
 const api = axios.create({
     baseURL: URL,
-    withCredentials: true
+    withCredentials: true,
 })
 
 export default api
