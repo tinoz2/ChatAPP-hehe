@@ -1,8 +1,7 @@
 import axios from 'axios'
-import { URL_BACKEND } from '../config/host.js'
 
 const api = axios.create({
-    baseURL: URL_BACKEND,
+    baseURL: 'https://chatapp-hehe.onrender.com',
     withCredentials: true,
     headers: {
         'Content-Type': 'application/json',
